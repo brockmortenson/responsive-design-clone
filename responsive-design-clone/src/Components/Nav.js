@@ -4,23 +4,20 @@ class Nav extends Component {
     constructor(){
         super();
         this.state = {
-            menu: 'closed'
+            open: false
         }
     }
 
-    menu = () => {
-        if (this.state.menu === 'closed'){
-            this.setState({menu: 'open'})
-        } else {
-            this.setState({menu: 'closed'})
-        }
+    handleClick = () => {
+        this.setState({open: !this.state.open})
     }
 
     render(){
+        const {open} = this.state
         return(
             <nav>
-                <img className='menu' src={'https://designshack.net/wp-content/uploads/reasons-to-avoid-hamburger-icon.png'} onClick={this.menu}></img>
-                <ul className={this.state.menu === 'closed' ? 'closed' : ''}>
+                <img className='menu' src={'https://designshack.net/wp-content/uploads/reasons-to-avoid-hamburger-icon.png'} alt='menu-icon' onClick={this.handleClick}></img>
+                <ul className={open ? 'opened' : 'closed'}>
                     <li>SERVICES</li>
                     <li>PORTFOLIO</li>
                     <li>ABOUT</li>
